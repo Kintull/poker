@@ -5,7 +5,9 @@ This is a test application that help you with comparing poker hands.
 Run application:
 
 > mix compile
+
 > iex -S mix
+
 > Poker.start
 
 Exit application:
