@@ -22,7 +22,7 @@ defmodule Poker.PokerHand do
   Such structure is comparable:
     {{3,2,0,0,0},{2,10,0,0,0}} > {{1,1,1,1,1},{10,8,6,4,2}}
 
-  Winning is message is printed is there is a winner.
+  Winning message is printed if there is a winner.
   """
 
   @doc """
@@ -55,7 +55,7 @@ defmodule Poker.PokerHand do
   fetched and prepared by CliParser.
 
   Result is a tuple that consists of two tuples,
-  where the first represents type of hand
+  where the first represents type of the hand
   and the second strength of this hand.
 
   Results can be compared with each other by operators >, <, ==.
