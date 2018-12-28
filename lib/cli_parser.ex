@@ -41,11 +41,17 @@ defmodule Poker.CliParser do
   def parse_user_input(input_string) do
     user_hand_list0 = String.trim(input_string)
 
+    # get user names like "Black:" and "White:"
     name_list0 = Regex.scan(~r/[ ]?\w+: /, user_hand_list0)
+    # Delete ":" from names
     name_list = Enum.map(name_list0, fn [name] -> Regex.replace(~r/[ :]/, name, "") end)
 
+    # split string using pattern " UserName:"
+    # relust is list of hand strings like
+    # ["", "2H 3D 5S 9C KD", "2C 3H 4S 8C AH"]
     [_ | hand_list_raw] = Regex.split(~r/[ ]?\w+: /, user_hand_list0)
 
+    # cobine names with hands [{name, hand},..]
     user_hand_list = Enum.zip(name_list, hand_list_raw)
 
     # IO.puts("user_hand_list")
@@ -60,6 +66,7 @@ defmodule Poker.CliParser do
     end
 
     Enum.map(user_hand_list, fn {user_name, hand_list_raw} ->
+      # fetch cards from hand string
       hand_list = Regex.scan(~r/\w+/, hand_list_raw)
       # IO.inspect(hand_list)
 
